@@ -7,13 +7,14 @@ import InputUserPassword from './InputUserPassword';
 const Login = () => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  
   const onChangeUserId = (id) => {
     setUserId(id);
   }
   const onChangeUserPassword = (password) => {
     setUserPassword(password);
   }
-  console.log(userId);
+  
   return (
     <>
       <div id="login-container">
@@ -24,7 +25,6 @@ const Login = () => {
             onChangeUserId={onChangeUserId}
           />
           <label>Password:</label>
-
           <InputUserPassword
             onChangeUserPassword={onChangeUserPassword}
           />
