@@ -1,0 +1,19 @@
+#login-container {
+  margin: 15rem auto;
+  width: 60vw;
+  border: solid gray 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-userInput {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#login-userInput :nth-child(2n){
+  margin-bottom: 1rem;
+}
