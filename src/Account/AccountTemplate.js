@@ -1,19 +1,26 @@
-import InputUserInfo from "./signUp/InputUserInfo";
-import Button from "./login/Button";
-import { useState } from "react";
-import './SignUp.css';
+import InputUserInfo from "./InputUserInfo";
+import ValidationBtn from "./ValidationBtn";
+import { useState, useEffect } from "react";
+import { api } from '../API/API'
+import './AccountTemplate.css';
 
-const SignUp = ({pageName}) => {
+const AccountTemplate = ({ pageName, typeAPI }) => {
+  const _api = api[typeAPI];
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  
+
   const onChangeUserId = (id) => {
     setUserId(id);
   }
   const onChangeUserPassword = (password) => {
     setUserPassword(password);
   }
-  
+  const handleBtnClick = () => {
+   _api({
+      email: userId,
+      password: userPassword
+    }).then((res)=> localStorage.setItem('wtd_tk',res.data))
+  }
   return (
     <>
       <div id="a-container">
@@ -28,13 +35,14 @@ const SignUp = ({pageName}) => {
             onChangeUserInfo={onChangeUserPassword}
           />
         </div>
-        <Button
+        <ValidationBtn
           userId={userId}
           userPassword={userPassword}
-        >{pageName}</Button>
+          handleBtnClick={handleBtnClick}
+        >{pageName}</ValidationBtn>
       </div>
     </>
   )
 }
 
-export default SignUp;
+export default AccountTemplate;
