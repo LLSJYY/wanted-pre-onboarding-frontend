@@ -5,11 +5,11 @@ const NewTodo = ({setNewTodo,onAddTodo}) => {
   
 
   const onKeyDownInput= (e)=>{
+
     if(e.key === 'Enter'){
       setNewTodo(inputRef.current.value);
       onAddTodo(inputRef.current.value);
       inputRef.current.value = "";
-
     }
   }
   const onClickBtn = () => {

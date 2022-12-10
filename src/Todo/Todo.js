@@ -34,8 +34,8 @@ const Todo = () => {
   }
 
   const onDestoryTodo = (id) => {
-    api.destoryTodo(accessToken,id).then((res)=>{
-      const newTodoList =todoList.filter((el)=> {
+    api.destoryTodo(accessToken, id).then((res) => {
+      const newTodoList = todoList.filter((el) => {
         return el.id !== id
       });
       console.log(newTodoList);
@@ -49,7 +49,21 @@ const Todo = () => {
 
   }
 
-  
+  const onCompletedTodo = (item) => {
+    console.log(item);
+    const copyTodoList = todoList;
+    api.completedTodo(accessToken, item).then((res) => {
+      copyTodoList.forEach((el) => {
+        if (el.id === item.id) {
+          el.isCompleted = !item.isCompleted;
+        }
+      })
+      setTodoList(copyTodoList);
+    })
+  }
+
+  console.log(todoList);
+
 
   return (
     <div id="todo-container">
@@ -61,7 +75,10 @@ const Todo = () => {
         <TodoItem
           todoList={todoList}
           onDestoryTodo={onDestoryTodo}
-          setNewTodo={setNewTodo} />
+          setNewTodo={setNewTodo}
+          onCompletedTodo={onCompletedTodo}
+        />
+
       </TodoList>
     </div>
   )
