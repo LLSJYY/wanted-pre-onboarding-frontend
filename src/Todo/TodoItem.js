@@ -1,13 +1,12 @@
 import { useRef } from "react"
 
-const TodoItem = ({ todoList }) => {
+const TodoItem = ({ todoList,onDestoryTodo }) => {
   const checkboxRef = useRef();
   const onClickCheckbox = (e) => {
   }
   const onClickModifyBtn = (e) => {
   }
-  const onClickDestroyBtn = (e) => {
-  }
+  
   
   return (
     todoList.map((el) => {
@@ -20,7 +19,7 @@ const TodoItem = ({ todoList }) => {
         />
         <span id="todoText">{el.todo}</span>
         <button onClick={onClickModifyBtn} className="btn modify">수정</button>
-        <button onClick={onClickDestroyBtn} className="btn destroy">삭제</button>
+        <button onClick={()=>onDestoryTodo(el.id)} className="btn destroy">삭제</button>
       </li>
     })
   )

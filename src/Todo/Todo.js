@@ -33,9 +33,23 @@ const Todo = () => {
     })
   }
 
-  const onDeleteTodo = () => {
-    
+  const onDestoryTodo = (id) => {
+    api.destoryTodo(accessToken,id).then((res)=>{
+      const newTodoList =todoList.filter((el)=> {
+        return el.id !== id
+      });
+      console.log(newTodoList);
+      setTodoList([
+        ...newTodoList,
+      ])
+    })
   }
+
+  const onModifyTodo = () => {
+
+  }
+
+  
 
   return (
     <div id="todo-container">
@@ -46,6 +60,7 @@ const Todo = () => {
       <TodoList>
         <TodoItem
           todoList={todoList}
+          onDestoryTodo={onDestoryTodo}
           setNewTodo={setNewTodo} />
       </TodoList>
     </div>

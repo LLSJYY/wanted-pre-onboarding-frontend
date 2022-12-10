@@ -39,4 +39,11 @@ export const api = {
       }
     })
   },
+  destoryTodo : (accessToken,id) => {
+    return axios.delete(`https://pre-onboarding-selection-task.shop/todos/${id}`, {
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+      }
+    },
+    )},
 }
