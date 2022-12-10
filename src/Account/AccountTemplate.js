@@ -1,5 +1,6 @@
 import InputUserInfo from "./InputUserInfo";
 import ValidationBtn from "./ValidationBtn";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { api } from '../API/API'
 import './AccountTemplate.css';
@@ -8,6 +9,7 @@ const AccountTemplate = ({ pageName, typeAPI }) => {
   const _api = api[typeAPI];
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const navigate = useNavigate();
 
   const onChangeUserId = (id) => {
     setUserId(id);
@@ -19,7 +21,10 @@ const AccountTemplate = ({ pageName, typeAPI }) => {
    _api({
       email: userId,
       password: userPassword
-    }).then((res)=> localStorage.setItem('wtd_tk',res.data))
+    }).then((res)=> {
+      localStorage.setItem('wtd_tk',res.data.access_token)
+      navigate('/todos') //res 가 성공적이면~
+    }).catch((err)=> console.warn(err));
   }
   return (
     <>

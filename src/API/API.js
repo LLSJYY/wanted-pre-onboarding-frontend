@@ -19,5 +19,24 @@ export const api = {
         "Content-Type": "application/json",
       }
     })
-  }
+  },
+  initTodo: (accessToken) => {
+    return axios.get('https://pre-onboarding-selection-task.shop/todos',
+      {
+        headers: {
+          "Authorization": `Bearer ${accessToken}`
+        }
+      }
+    )
+  },
+  addTodo: (accessToken,data) => {
+    return axios.post("https://pre-onboarding-selection-task.shop/todos", {
+      "todo": data,
+    }, {
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      }
+    })
+  },
 }

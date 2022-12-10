@@ -1,18 +1,20 @@
 import { useRef } from "react";
 
-const NewTodo = ({setTodoText}) => {
+const NewTodo = ({setNewTodo,onAddTodo}) => {
   const inputRef = useRef();
   
 
   const onKeyDownInput= (e)=>{
     if(e.key === 'Enter'){
-      setTodoText(inputRef.current.value);
+      setNewTodo(inputRef.current.value);
+      onAddTodo(inputRef.current.value);
       inputRef.current.value = "";
 
     }
   }
   const onClickBtn = () => {
-    setTodoText(inputRef.current.value);
+    setNewTodo(inputRef.current.value);
+    onAddTodo(inputRef.current.value);
     inputRef.current.value = "";
   }
 
@@ -22,6 +24,7 @@ const NewTodo = ({setTodoText}) => {
     <input
       onKeyDown={onKeyDownInput}
       ref={inputRef}
+      placeholder="newTodo"
 />
     <button
       onClick={onClickBtn}

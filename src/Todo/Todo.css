@@ -1,0 +1,12 @@
+#todo-container{
+  margin: 2rem auto;
+  width: 80vw;
+  height: 80vh;
+  border: 2px black solid;
+}
+.newTodo{
+  margin:   2rem auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

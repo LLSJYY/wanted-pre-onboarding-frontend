@@ -1,9 +1,7 @@
 import './App.css';
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-
-import LogIn from './Account/logIn/LogIn';
-import SignUp from './Account/signUp/SignUp';
 import AccountPage from './Account/AccountPage';
+import Todo from './Todo/Todo';
 function App() {
 
   return (
@@ -11,6 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AccountPage/>} />
+          <Route path="/todos" element={<Todo/>}/>
         </Routes>
       </BrowserRouter>
     </div>
