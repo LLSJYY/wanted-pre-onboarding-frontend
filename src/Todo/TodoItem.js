@@ -1,8 +1,29 @@
-const TodoItem = ({ item }) => {
+import { useRef } from "react"
 
+const TodoItem = ({ todoList }) => {
+  const checkboxRef = useRef();
+  const onClickCheckbox = (e) => {
+  }
+  const onClickModifyBtn = (e) => {
+  }
+  const onClickDestroyBtn = (e) => {
+  }
+  
   return (
-    item.map((el)=>{
-      <li><input type='checkbox'/>{el.data}</li>
+    todoList.map((el) => {
+      return <li key={el.id} className='todoItem'>
+        <input
+          id="todoCheckbox"
+          type='checkbox'
+          ref={checkboxRef}
+          onClick={onClickCheckbox}
+        />
+        <span id="todoText">{el.todo}</span>
+        <button onClick={onClickModifyBtn} className="btn modify">수정</button>
+        <button onClick={onClickDestroyBtn} className="btn destroy">삭제</button>
+      </li>
     })
   )
 }
+
+export default TodoItem;

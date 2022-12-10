@@ -10,3 +10,19 @@
   align-items: center;
   justify-content: center;
 }
+
+.todoItem{
+  list-style: none;
+  position: relative;
+  margin: 0.5rem;
+}
+
+.btn.destroy {
+  position: absolute;
+  right: 1rem;
+}
+.btn.modify {
+  position: absolute;
+  right: 4rem;
+}
+

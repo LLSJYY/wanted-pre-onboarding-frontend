@@ -2,8 +2,8 @@ import NewTodo from "./NewTodo";
 import { useEffect, useState } from "react";
 import { api } from "../API/API";
 import './Todo.css'
-import { useNavigate } from "react-router-dom";
 import TodoList from "./TodoList";
+import TodoItem from "./TodoItem";
 const Todo = () => {
   const accessToken = localStorage.getItem('wtd_tk');
   const [newTodo, setNewTodo] = useState('');
@@ -20,7 +20,7 @@ const Todo = () => {
 
   const onAddTodo = (data) => {
     api.addTodo(accessToken, data).then((res) => {
-      const {todo,userId,id,isCompleted} = res.data;
+      const { todo, userId, id, isCompleted } = res.data;
       setTodoList([
         ...todoList,
         {
@@ -33,6 +33,9 @@ const Todo = () => {
     })
   }
 
+  const onDeleteTodo = () => {
+    
+  }
 
   return (
     <div id="todo-container">
@@ -41,7 +44,9 @@ const Todo = () => {
         onAddTodo={onAddTodo}
       />
       <TodoList>
-
+        <TodoItem
+          todoList={todoList}
+          setNewTodo={setNewTodo} />
       </TodoList>
     </div>
   )
