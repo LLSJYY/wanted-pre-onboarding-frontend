@@ -1,9 +1,10 @@
-import NewTodo from "./NewTodo";
 import { useEffect, useState } from "react";
 import { api } from "../API/API";
+import NewTodo from "./NewTodo";
 import './Todo.css'
 import TodoList from "./TodoList";
 import TodoItem from "./TodoItem";
+
 const Todo = () => {
   const accessToken = localStorage.getItem('wtd_tk');
   const [newTodo, setNewTodo] = useState('');

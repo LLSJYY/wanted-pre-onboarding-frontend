@@ -1,4 +1,4 @@
-import { useRef ,useEffect} from "react";
+import { useRef } from "react";
 
 const TodoItem = ({ todoList, modify, onDestoryTodo, onCompletedTodo, onModifyBtn,onModifyTodo}) => {
   const inputRef = useRef();
