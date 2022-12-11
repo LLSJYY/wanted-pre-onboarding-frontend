@@ -59,4 +59,15 @@ export const api = {
       }
     })  
   },
+  modifyTodo : (accessToken,{ item, newTodo }) => {
+    return axios.put(`https://pre-onboarding-selection-task.shop/todos/${item.id}`, {
+      todo: newTodo,
+      isCompleted: item.isCompleted,
+    }, {
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      }
+    })
+  },
 }
