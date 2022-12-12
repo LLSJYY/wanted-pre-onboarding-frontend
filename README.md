@@ -2,7 +2,7 @@
 
 https://user-images.githubusercontent.com/96014828/207006502-e45e3fd6-10bb-40da-94da-c4cdfef821ac.mov
 
-
+블로그:https://160123-j.tistory.com/
 
 로그인 / 회원가입.  
 
