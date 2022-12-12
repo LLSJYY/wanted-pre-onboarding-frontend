@@ -48,21 +48,34 @@ export const api = {
     },
     )
   },
-  completedTodo: (accessToken, item) => {
-    return axios.put(`https://pre-onboarding-selection-task.shop/todos/${item.id}`, {
-      todo: item.todo,
-      isCompleted: !item.isCompleted,
-    }, {
-      headers: {
-        "Authorization": `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      }
-    })  
-  },
+  // completedTodo: (accessToken, item) => {
+  //   return axios.put(`https://pre-onboarding-selection-task.shop/todos/${item.id}`, {
+  //     todo: item.todo,
+  //     isCompleted: !item.isCompleted,
+  //   }, {
+  //     headers: {
+  //       "Authorization": `Bearer ${accessToken}`,
+  //       "Content-Type": "application/json",
+  //     }
+  //   })  
+  // },
+
+  // modifyTodo : (accessToken,{ item, newTodo }) => {
+  //   return axios.put(`https://pre-onboarding-selection-task.shop/todos/${item.id}`, {
+  //     todo: newTodo,
+  //     isCompleted: item.isCompleted,
+  //   }, {
+  //     headers: {
+  //       "Authorization": `Bearer ${accessToken}`,
+  //       "Content-Type": "application/json",
+  //     }
+  //   })
+  // },
+
   modifyTodo : (accessToken,{ item, newTodo }) => {
     return axios.put(`https://pre-onboarding-selection-task.shop/todos/${item.id}`, {
-      todo: newTodo,
-      isCompleted: item.isCompleted,
+      todo: newTodo === undefined ? item.todo : newTodo,
+      isCompleted: newTodo === undefined ? !item.isCompleted : item.isCompleted,
     }, {
       headers: {
         "Authorization": `Bearer ${accessToken}`,

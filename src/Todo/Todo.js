@@ -58,8 +58,9 @@ const Todo = () => {
   }
 
   const onCompletedTodo = (item) => {
-    const copyTodoList = todoList;
-    api.completedTodo(accessToken, item).then((res) => {
+    const deepCopy = (arr) => arr.map((el) => ({ ...el }));
+    const copyTodoList = deepCopy(todoList);
+    api.modifyTodo(accessToken, {item:item,}).then((res) => {
       copyTodoList.forEach((el) => {
         if (el.id === item.id) {
           el.isCompleted = !item.isCompleted;
