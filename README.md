@@ -59,4 +59,4 @@ Todo
 - [x] loginPage template 통합
 - [ ] newTodo Input 한글 오류  => vue에서 비슷한 경험이 있었음.
 - [ ] isCompleted / onModifyTodo => 기능이 비슷해서 통합하기
-- [ ] api Todo 파라미터  
+- [x] api Todo 파라미터 이름통일 id=>item
