@@ -22,7 +22,7 @@ export const api = {
       }
     })
   },
-    // related to Todo
+    // related to ATo
 
   initTodo: (accessToken) => {
     return axios.get(`${url}/todos`,
