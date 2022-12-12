@@ -92,3 +92,9 @@ Todo
 - [ ] isCompleted / onModifyTodo => 기능이 비슷해서 통합하기
 - [x] api Todo 파라미터 이름통일 id=>item
 - [ ] switchMode 수정 => 타 투두리스트 수정버튼 눌렀을 때 수정 될수 있게 기능 
+
+## 설치 및 실행
+````
+npm install
+npm start
+````
