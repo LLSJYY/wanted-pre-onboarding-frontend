@@ -36,10 +36,10 @@ const Todo = () => {
     })
   }
 
-  const onDestoryTodo = (id) => {
-    api.destoryTodo(accessToken, id).then((res) => {
+  const onDestoryTodo = (item) => {
+    api.destoryTodo(accessToken, item).then((res) => {
       const newTodoList = todoList.filter((el) => {
-        return el.id !== id
+        return el.id !== item.id
       });
       console.log(newTodoList);
       setTodoList([

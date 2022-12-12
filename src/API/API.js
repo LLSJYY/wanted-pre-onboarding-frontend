@@ -40,8 +40,8 @@ export const api = {
       }
     })
   },
-  destoryTodo: (accessToken, id) => {
-    return axios.delete(`${url}/todos/${id}`, {
+  destoryTodo: (accessToken, item) => {
+    return axios.delete(`${url}/todos/${item.id}`, {
       headers: {
         "Authorization": `Bearer ${accessToken}`,
       }
