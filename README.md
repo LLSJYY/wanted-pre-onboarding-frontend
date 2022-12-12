@@ -32,6 +32,8 @@ typeAPI를 props로 전달을 해주어서 login/signUp이 props 로 전달되�
 
 3.토큰여부에 따른 리다이렉트 처리.  
 ````
+const accessToken = localStorage.getItem("wtd_tk");
+
 useEffect(() => {
     if(accessToken){
       navigate('/todos')
@@ -39,9 +41,13 @@ useEffect(() => {
   }, [accessToken])
 
 ````
-
+localstorage안의 토큰값을 이용하여 처리했습니다.
 
 투두리스트
+````
+공통사항:
+````
+
  1.AddTodo.    
  2.isCompleted    
  3.ModifyMode.    
@@ -53,3 +59,4 @@ Todo
 - [x] loginPage template 통합
 - [ ] newTodo Input 한글 오류  => vue에서 비슷한 경험이 있었음.
 - [ ] isCompleted / onModifyTodo => 기능이 비슷해서 통합하기
+- [ ] api Todo 파라미터  
