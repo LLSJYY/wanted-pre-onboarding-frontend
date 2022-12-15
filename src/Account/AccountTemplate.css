@@ -1,5 +1,5 @@
 #a-container {
-  margin: 15rem auto;
+  margin: 5rem auto;
   width: 60vw;
   border: solid gray 1px;
   display: flex;
@@ -16,4 +16,14 @@
 
 #login-userInput :nth-child(2n){
   margin-bottom: 1rem;
+}
+
+#btn-signup {
+  display: inherit;
+  margin: 1rem auto;
+
+}
+
+#btn-validation {
+  margin : 0.5rem;
 }

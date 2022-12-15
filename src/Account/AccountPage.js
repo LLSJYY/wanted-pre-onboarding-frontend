@@ -8,23 +8,24 @@ const AccountPage = () => {
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("wtd_tk");
   useEffect(() => {
-    if(accessToken){
+    if (accessToken) {
       navigate('/todos')
     }
   }, [accessToken])
 
-  const onSetPage =(pageName) => {
+  const onSetPage = (pageName) => {
     console.log(pageName);
     setpage(pageName)
   }
   return (
     <>
-      <AccountTemplate 
+      <AccountTemplate
         pageName={page}
         typeAPI={page}
       />
       <CreateUserBtn
-      onSetPage={onSetPage}
+        onSetPage={onSetPage}
+        pageName={page}
       />
     </>
   )

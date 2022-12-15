@@ -1,11 +1,13 @@
-const CreateUserBtn = ({onSetPage}) => {
-    const onClick = () => {
+const CreateUserBtn = ({onSetPage,pageName}) => {
+  console.log(pageName);  
+  const onClick = () => {
       onSetPage('signUp')
     }
   return (
-    <button onClick={onClick}>
+     pageName === 'logIn' ? <button id="btn-signup" onClick={onClick}>
       <span>create user</span>
     </button>
+    : ""
   )
 }
 

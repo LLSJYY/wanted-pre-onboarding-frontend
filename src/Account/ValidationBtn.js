@@ -1,4 +1,4 @@
-import { vaildUserId, vaildUserPassword } from './Assignment1/validation';
+import { validUserId, validUserPassword } from './Assignment1/validation';
 
 const ValidationBtn = ({ children, userId ,userPassword,handleBtnClick}) => {
   const onClickBtn =()=>{
@@ -6,8 +6,9 @@ const ValidationBtn = ({ children, userId ,userPassword,handleBtnClick}) => {
   }
   return (
     <button
-      disabled={vaildUserId(userId) || vaildUserPassword(userPassword)} //
-      onClick={onClickBtn} 
+      id="btn-validation"
+      disabled={validUserId(userId) || validUserPassword(userPassword)} //
+      onClick={onClickBtn}
     >{children}</button>
   )
 }
