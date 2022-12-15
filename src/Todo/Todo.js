@@ -4,14 +4,19 @@ import NewTodo from "./NewTodo";
 import './Todo.css'
 import TodoList from "./TodoList";
 import TodoItem from "./TodoItem";
+import { useNavigate } from "react-router-dom";
 
 const Todo = () => {
+  const navigation = useNavigate();
   const accessToken = localStorage.getItem('wtd_tk');
   const [newTodo, setNewTodo] = useState('');
   const [todoList, setTodoList] = useState([]);
   const [modify, setModify] = useState({ id: 0, mode: '',isModified:false });
   
   useEffect(() => {
+    if(!accessToken){
+      return navigation('/')
+    }
     api.initTodo(accessToken).then((res) => {
       setTodoList([
         ...res.data,
