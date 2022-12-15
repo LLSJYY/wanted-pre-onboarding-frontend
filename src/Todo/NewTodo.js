@@ -22,7 +22,7 @@ const NewTodo = ({ setNewTodo, onAddTodo }) => {
   return (
     <div className="newTodo">
       <input
-        onKeyDown={onKeyDownInput}
+        onKeyPress={onKeyDownInput}
         ref={inputRef}
         placeholder="newTodo"
       />
