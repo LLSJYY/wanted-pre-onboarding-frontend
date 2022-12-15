@@ -6,8 +6,10 @@ const TodoItem = ({ todoList, modify, onDestoryTodo, onCompletedTodo, onModifyBt
     inputRef.current.value = e.target.value;
   }
   
-
-
+  
+  /*
+  
+  */
   function switchMode(mode, el) {  /* todo: 함수이름명 고치기.. */
     if (el.id === modify.id && mode === 'modify') {
       return <>
@@ -19,7 +21,7 @@ const TodoItem = ({ todoList, modify, onDestoryTodo, onCompletedTodo, onModifyBt
     return <>
       <span id="todoText">{el.todo}</span>
       <button onClick={() => onModifyBtn(el.id, "modify")} className="btn modify">수정</button>
-      <button onClick={() => onDestoryTodo(el.id)} className="btn destroy">삭제</button>
+      <button onClick={() => onDestoryTodo(el)} className="btn destroy">삭제</button>
     </>
 
   }

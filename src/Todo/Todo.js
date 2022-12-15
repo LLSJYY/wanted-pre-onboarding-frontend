@@ -12,9 +12,9 @@ const Todo = () => {
   const [newTodo, setNewTodo] = useState('');
   const [todoList, setTodoList] = useState([]);
   const [modify, setModify] = useState({ id: 0, mode: '',isModified:false });
-  
+
   useEffect(() => {
-    if(!accessToken){ 
+    if(!accessToken){ /* 리다이렉트*/
       return navigation('/')
     }
     api.initTodo(accessToken).then((res) => {
@@ -46,7 +46,6 @@ const Todo = () => {
       const newTodoList = todoList.filter((el) => {
         return el.id !== item.id
       });
-      console.log(newTodoList);
       setTodoList([
         ...newTodoList,
       ])
