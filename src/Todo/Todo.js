@@ -14,7 +14,7 @@ const Todo = () => {
   const [modify, setModify] = useState({ id: 0, mode: '',isModified:false });
   
   useEffect(() => {
-    if(!accessToken){
+    if(!accessToken){ 
       return navigation('/')
     }
     api.initTodo(accessToken).then((res) => {
