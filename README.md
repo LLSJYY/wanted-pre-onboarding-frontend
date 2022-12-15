@@ -93,7 +93,7 @@ Todo
 - [ ] switchMode 수정 => 타 투두리스트 수정버튼 눌렀을 때 수정 될수 있게 기능 
 
 issue. 
-- [ ] newTodo Input 한글 입력 
+- [x] newTodo Input 한글 입력 
 
 ## 설치 및 실행
 ````
