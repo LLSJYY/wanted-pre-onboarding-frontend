@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# 원티드 프리온보딩 프론트엔드 - 선발 과제
+## 블로그:https://160123-j.tistory.com/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 데모영상    
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+https://user-images.githubusercontent.com/96014828/207026821-8072d08a-348f-492e-a34c-c949492e461e.mp4
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+로그인 / 회원가입.  
 
-### `npm run build`
+Assignment1. 유효성 검사  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+  const emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const passwordformat = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+정규표현식을 이용해서 포맷을 만들고, 그이후 match 값을 validBtn의 disable속성에 전달해서 유효성검사를 진행했습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Assignment2. 로그인 API 호출.     
+````
+const _api = api[typeAPI];
 
-### `npm run eject`
+const handleBtnClick = () => {
+   _api({
+      email: userId,
+      password: userPassword
+    }).then((res)=> {
+      localStorage.setItem('wtd_tk',res.data.access_token)
+      navigate('/todos') //res 가 성공적이면~
+    }).catch((err)=> console.warn(err));
+  }
+````
+typeAPI를 props로 전달을 해주어서 login/signUp이 props 로 전달되는 값에 따라 실행되게해서 컴포넌트의 재사용성을 높이려고 시도했습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Assignment3. 토큰여부에 따른 리다이렉트 처리.  
+````
+const accessToken = localStorage.getItem("wtd_tk");
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+useEffect(() => {
+    if(accessToken){
+      navigate('/todos')
+    }
+  }, [accessToken])
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+````
+localstorage안의 토큰값을 이용하여 처리했습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+투두리스트
 
-## Learn More
+Assignment4. /todo경로에 접속하면 투두 리스트의 목록구현과 addTodo 구현
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+````
+const onAddTodo = (data) => {
+    api.addTodo(accessToken, data).then((res) => {  
+      const { todo, userId, id, isCompleted } = res.data;
+      setTodoList([
+        ...todoList,
+        {
+          todo,
+          userId,
+          id,
+          isCompleted,
+        },
+      ])
+    })
+  }
+ 
+````
+1. 경로접속시 TodoList구현은 useEffect 를 이용하여 구현했습니다
+2. addTodo 할때,디스트럭쳐링을 이용해서 코드를 줄였습니다
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Assignment5. 투두 리스트의 수정, 삭제 기능 구현 
+````
+function switchMode(mode, el) {  /* todo: 함수이름명 고치기.. */
+    if (el.id === modify.id && mode === 'modify') {
+      return <>
+     {...}
+    </>
+````
+1.TodoItem 컴포넌트에서 삼항연산자 대신  함수를 이용하여 수정기능의 공통된 코드를 합쳤음. + 
+수정기능을 이용할때, 수정 => 제출 경우에 수정이 정상적으로 되지만, 수정 => 다른 투두 수정 버튼을 눌렀을 때는 수정이 안됩니다.
+후자의 방식으로 수정할떄 수정기능이 정상적으로 이용될 수 있도록 나중에 기능추가를 위해 함수로 뺴놨습니다.
 
-### Code Splitting
+Todo
+- [x] loginPage template 통합
+- [ ] newTodo Input 한글 오류  => vue에서 비슷한 경험이 있었음.
+- [ ] isCompleted / onModifyTodo => 기능이 비슷해서 통합하기
+- [x] api Todo 파라미터 이름통일 id=>item
+- [ ] switchMode 수정 => 타 투두리스트 수정버튼 눌렀을 때 수정 될수 있게 기능 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 설치 및 실행
+````
+npm install
+npm start
+````
