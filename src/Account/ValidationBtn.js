@@ -7,7 +7,7 @@ const ValidationBtn = ({ children, userId ,userPassword,handleBtnClick}) => {
   return (
     <button
       disabled={vaildUserId(userId) || vaildUserPassword(userPassword)} //
-      onClick={onClickBtn}
+      onClick={onClickBtn} 
     >{children}</button>
   )
 }

@@ -38,6 +38,7 @@ const AccountTemplate = ({ pageName, typeAPI }) => {
           <label>Password:</label>
           <InputUserInfo
             onChangeUserInfo={onChangeUserPassword}
+            type = {'password'}
           />
         </div>
         <ValidationBtn
